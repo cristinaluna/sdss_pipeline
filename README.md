@@ -145,7 +145,7 @@ All data downloaded from:
 
 ## 📖 Citation
 
-### Citing This Pipeline
+### Citing This Software
 
 If you use this pipeline in your research or projects, please cite:
 
@@ -164,8 +164,8 @@ C. Luna (2025), SDSS Data Pipeline: Automated Download and Analysis of Sloan Dig
   year         = 2025,
   publisher    = {Zenodo},
   version      = {v1.0.0},
-  doi          = {10.5281/zenodo.17375241},
-  url          = {https://doi.org/10.5281/zenodo.17375241}
+  doi          = {10.5281/zenodo.17375604},
+  url          = {https://doi.org/10.5281/zenodo.17375604}
 }
 ```
 
