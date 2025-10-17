@@ -151,8 +151,9 @@ If you use this pipeline in your research or projects, please cite:
 
 **Plain text:**
 ```
-C. Luna (2025), SDSS Data Pipeline: Automated Download and Analysis of Sloan Digital Sky Survey Catalogs, DOI: 10.5281/zenodo.17375241
+C. Luna (2025), SDSS Data Pipeline: Automated Download and Analysis of Sloan Digital Sky Survey Catalogs, DOI: 10.5281/zenodo.17375604
 ```
+[![DOI](https://zenodo.org/badge/1078078950.svg)](https://doi.org/10.5281/zenodo.17375604)
 
 **BibTeX:**
 ```bibtex
