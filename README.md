@@ -58,7 +58,7 @@ This will:
 **Step 2: Run Analyses**
 ```bash
 # Interactive menu for all analyses
-python sdss_master_analysis.py
+python sdss_main_analysis.py
 
 # Or run individual analyses
 python sdss_spectro_analysis.py
@@ -73,7 +73,7 @@ python sdss_astra_analysis.py
 ```
 sdss_pipeline/
 ├── sdss_pipeline.py              # Main download & processing pipeline
-├── sdss_master_analysis.py       # Unified analysis interface
+├── sdss_main_analysis.py       # Unified analysis interface
 ├── sdss_spectro_analysis.py      # Spectroscopic data analyzer
 ├── sdss_apogee_analysis.py       # APOGEE infrared analyzer
 ├── sdss_astra_analysis.py        # ASTRA stellar parameter analyzer
@@ -262,29 +262,29 @@ analyzer.compare_pipelines()
 - Pipeline comparison diagrams
 - Catalog with population labels
 
-### 4. Master Analysis (`sdss_master_analysis.py`)
+### 4. main Analysis (`sdss_main_analysis.py`)
 
 **Unified interface for all analyses:**
 
 ```python
-from sdss_master_analysis import SDSSMasterAnalyzer
+from sdss_main_analysis import SDSSmainAnalyzer
 
 # Initialize
-master = SDSSMasterAnalyzer()
+main = SDSSmainAnalyzer()
 
 # List what's available
-master.list_available_catalogs()
+main.list_available_catalogs()
 
 # Run specific analysis
-spectro = master.analyze_spectroscopic('spectro_dr19')
-apogee = master.analyze_apogee()
-astra = master.analyze_astra('astra_dr19')
+spectro = main.analyze_spectroscopic('spectro_dr19')
+apogee = main.analyze_apogee()
+astra = main.analyze_astra('astra_dr19')
 
 # Or run everything
-results = master.analyze_all()
+results = main.analyze_all()
 
 # Interactive menu
-master.interactive_menu()
+main.interactive_menu()
 ```
 
 ---
@@ -783,8 +783,8 @@ python sdss_spectro_analysis.py
 python sdss_apogee_analysis.py
 python sdss_astra_analysis.py
 
-# Test master interface
-python sdss_master_analysis.py
+# Test main interface
+python sdss_main_analysis.py
 ```
 
 ### Future Enhancements
@@ -929,7 +929,7 @@ When fully downloaded:
 - ✅ Spectroscopic analysis module
 - ✅ APOGEE analysis module
 - ✅ ASTRA analysis module
-- ✅ Master analysis interface
+- ✅ main analysis interface
 - ✅ Comprehensive documentation
 
 ### Version 1.0 (Planned)
