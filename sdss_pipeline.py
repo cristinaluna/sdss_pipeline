@@ -322,13 +322,13 @@ class SDSSPipeline:
         logger.info(f"Data prepared: {df.shape}")
         return df
     
-    def load_catalog(self, catalog_id: str, max_rows: int = 10000) -> Optional[pd.DataFrame]:
+    def load_catalog(self, catalog_id: str, max_rows: int = None) -> Optional[pd.DataFrame]:
         """
         Load a downloaded catalog into memory
         
         Args:
             catalog_id: Catalog to load
-            max_rows: Maximum rows to load
+            max_rows: Maximum rows to load (None = all)
             
         Returns:
             Loaded DataFrame
@@ -526,10 +526,27 @@ class SDSSPipeline:
             print(data[numeric_cols].describe().T[['mean', 'std', 'min', 'max']])
 
 
-def main():
-    """Main execution"""
+def main(max_rows: int = 10000):
+    """
+    Main execution
+    
+    Args:
+        max_rows: Maximum number of rows to load per catalog (None = all rows)
+                  Examples: 
+                  - 1000 for quick testing
+                  - 10000 for medium testing
+                  - 100000 for larger samples
+                  - None for complete datasets
+    """
     print("\n" + "="*80)
     print("🔭 SDSS COMPLETE DATA PIPELINE")
+    print("="*80)
+    
+    # Display max_rows setting
+    if max_rows is None:
+        print(f"⚙️  Loading mode: FULL DATASET (all rows)")
+    else:
+        print(f"⚙️  Loading mode: LIMITED to {max_rows:,} rows per catalog")
     print("="*80)
     
     # Initialize
@@ -590,6 +607,10 @@ def main():
     
     print("\n" + "="*80)
     print(f"Processing {len(downloaded_catalogs)} downloaded catalog(s)...")
+    if max_rows:
+        print(f"Loading up to {max_rows:,} rows per catalog")
+    else:
+        print(f"Loading ALL rows from each catalog")
     print("="*80)
     
     processed_data = {}
@@ -600,8 +621,8 @@ def main():
         print("="*80)
         
         try:
-            # Load and process
-            data = pipeline.load_catalog(cat_id, max_rows=10000)
+            # Load and process with max_rows parameter
+            data = pipeline.load_catalog(cat_id, max_rows=max_rows)
             
             if data is not None:
                 processed_data[cat_id] = data
@@ -650,6 +671,7 @@ def main():
     print(f"\n📊 Summary:")
     print(f"   Catalogs downloaded: {len(downloaded_catalogs)}")
     print(f"   Catalogs processed: {len(processed_data)}")
+    print(f"   Max rows per catalog: {max_rows if max_rows else 'ALL'}")
     
     if processed_data:
         print(f"\n✓ Successfully processed:")
@@ -667,8 +689,20 @@ def main():
     for cat_id in processed_data.keys():
         print(f"   {cat_id} = pd.read_parquet('sdss_data/processed/{cat_id}_processed.parquet')")
     
+    print(f"\n💡 To run with different max_rows:")
+    print(f"   pipeline, data = main(max_rows=1000)    # Quick test")
+    print(f"   pipeline, data = main(max_rows=50000)   # Medium sample")
+    print(f"   pipeline, data = main(max_rows=None)    # Full dataset")
+    
     return pipeline, processed_data
 
 
 if __name__ == "__main__":
-    pipeline, data = main()
+    # Test with 10,000 rows (change this value to test different sizes)
+    # Options:
+    # - max_rows=1000    -> Quick testing
+    # - max_rows=10000   -> Default testing
+    # - max_rows=100000  -> Large sample
+    # - max_rows=None    -> Full dataset (may take a long time, considering spectro_dr19 has 2183284 rows!)
+    
+    pipeline, data = main(max_rows=None)
