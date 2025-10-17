@@ -157,7 +157,7 @@ C. Luna (2025), SDSS Data Pipeline: Automated Download and Analysis of Sloan Dig
 **BibTeX:**
 ```bibtex
 @software{luna2025sdss,
-  author       = {Luna, Cris},
+  author       = {Luna, Cristina},
   title        = {{SDSS Data Pipeline: Automated Download and 
                    Analysis of Sloan Digital Sky Survey Catalogs}},
   year         = 2025,
