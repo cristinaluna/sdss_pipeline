@@ -548,6 +548,54 @@ print(f"High-quality APOGEE: {len(high_quality_apogee)}")
 print(f"Metal-poor stars: {len(metal_poor)}")
 ```
 
+### Examples Spectroscopic Analysis (`sdss_spectro_analysis.py`)
+
+**Analyses:**
+- Redshift distribution (full, low-z, cumulative)
+- Object classification breakdown
+- Color-magnitude diagrams (multiple colors)
+- Sky distribution (Mollweide projection)
+- Signal-to-noise analysis
+
+**Example:**
+```python
+from sdss_spectro_analysis import load_and_analyze
+
+# Load and analyze
+analyzer = load_and_analyze('spectro_dr19')
+
+# Run full analysis (all plots)
+analyzer.full_analysis()
+
+# Or individual analyses
+analyzer.print_summary()
+analyzer.plot_redshift_analysis()
+analyzer.plot_classification_analysis()
+analyzer.plot_color_magnitude_diagram()
+analyzer.plot_sky_distribution()
+```
+
+**Outputs:**
+- 6 redshift analysis plots
+- Classification pie charts
+- Multiple color-magnitude diagrams
+- Sky coverage maps
+
+**Example Visualization:**
+
+![Spectroscopic Analysis](output_data_examples/sdss_quick_analysis_spectro_dr19.png)
+
+*Figure: Quick analysis of SDSS DR19 spectroscopic data showing color-magnitude diagram, sky distribution, redshift distribution, magnitude distribution, and classification breakdown. This automated visualization reveals the survey's coverage of ~2.2M objects across the sky with redshifts ranging from local galaxies (z~0) to distant quasars (z>3).*
+
+
+**Other visualisations:**
+
+![Sky Distribution](output_data_examples/sky_distribution.png)
+
+![HR from ASTRA data](output_data_examples/HR_astra_diagram.png)
+
+![Kinematic Analysis](output_data_examples/kinematic_analysis.png)
+
 ---
 
 ## 📚 Data Sources & Documentation
@@ -944,54 +992,6 @@ A: Modify the URLs in `sdss_pipeline.py` CATALOGS dictionary to point to new rel
 *For questions, issues, or contributions, please visit the GitHub repository.*
 
 ---
-
-### Examples Spectroscopic Analysis (`sdss_spectro_analysis.py`)
-
-**Analyses:**
-- Redshift distribution (full, low-z, cumulative)
-- Object classification breakdown
-- Color-magnitude diagrams (multiple colors)
-- Sky distribution (Mollweide projection)
-- Signal-to-noise analysis
-
-**Example:**
-```python
-from sdss_spectro_analysis import load_and_analyze
-
-# Load and analyze
-analyzer = load_and_analyze('spectro_dr19')
-
-# Run full analysis (all plots)
-analyzer.full_analysis()
-
-# Or individual analyses
-analyzer.print_summary()
-analyzer.plot_redshift_analysis()
-analyzer.plot_classification_analysis()
-analyzer.plot_color_magnitude_diagram()
-analyzer.plot_sky_distribution()
-```
-
-**Outputs:**
-- 6 redshift analysis plots
-- Classification pie charts
-- Multiple color-magnitude diagrams
-- Sky coverage maps
-
-**Example Visualization:**
-
-![Spectroscopic Analysis](output_data_examples/sdss_quick_analysis_spectro_dr19.png)
-
-*Figure: Quick analysis of SDSS DR19 spectroscopic data showing color-magnitude diagram, sky distribution, redshift distribution, magnitude distribution, and classification breakdown. This automated visualization reveals the survey's coverage of ~2.2M objects across the sky with redshifts ranging from local galaxies (z~0) to distant quasars (z>3).*
-
-
-**Other visualisations:**
-
-![Sky Distribution](output_data_examples/sky_distribution.png)
-
-![HR from ASTRA data](output_data_examples/HR_astra_diagram.png)
-
-![Kinematic Analysis](output_data_examples/kinematic_analysis.png)
 
 
 **Last Updated:** October 2025  
